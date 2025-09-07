@@ -5,7 +5,8 @@
 #SBATCH --time=24:00:00   # walltime
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --cpus-per-task=20   # number of CPUs for this task
+#SBATCH --cpus-per-task=20   # number of processors for this task
+
 #SBATCH -J "rs4"   # job name
 
 ## /SBATCH -p general # partition (queue)
@@ -26,5 +27,4 @@ DPT.objects.processDirs(level='channel', cmd='import PyHipp as pyh; from PyHipp 
 print(time.localtime()); \
 print(time.time()-t0);"
 
-aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:427547500293:awsnotify --message "RS4JobDone"
-
+aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:427547500293:awsnotify --message "RPLS4JobDone"
