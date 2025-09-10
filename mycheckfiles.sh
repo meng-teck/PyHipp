@@ -1,11 +1,9 @@
 #!/bin/bash
 
-echo "Number of hkl files"
-find . -name "*.hkl" | grep -v -e spiketrain -e mountains | wc -l
-
-echo "Number of mda files"
-find mountains -name "firings.mda" | wc -l
-
-echo "Time taken (s)"
-tail pipe-slurm*.out
-
+for d in 20180??? 201810??; do
+    if [ -d "$d" ]; then
+        count=$(find "$d" -type f -name "*.hkl" | grep -v -e spiketrain -e mountains | wc -l)
+        echo "$d: number of hkl files"
+        echo "$count"
+    fi
+done
